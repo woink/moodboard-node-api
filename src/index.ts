@@ -1,13 +1,10 @@
-const express = require("express");
-const app = express();
-const port = 3000; // default port to listen
+import express, { Application, Request, Response, NextFunction } from 'express'
 
-// define a route handler for the default home page
-app.get( "/", ( req, res ) => {
-    res.send( "Hello world!" );
-} );
+const app: Application = express()
+const port = 5000
 
-// start the Express server
-app.listen( port, () => {
-    console.log( `server started at http://localhost:${ port }` );
-} );
+app.use('/', (req: Request, res: Response, next: NextFunction) => {
+  res.status(200).send({data: 'Hello from the backend'})
+})
+
+app.listen(port, () => console.log(`Server is listening on port ${port}`))
