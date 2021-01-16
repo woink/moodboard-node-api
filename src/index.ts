@@ -1,10 +1,5 @@
-import express, { Application, Request, Response, NextFunction } from 'express'
+import { app } from './app';
 
-const app: Application = express()
-const port = 5000
+const port = 5000;
 
-app.use('/', (req: Request, res: Response, next: NextFunction) => {
-  res.status(200).send({data: 'Hello from the backend'})
-})
-
-app.listen(port, () => console.log(`Server is listening on port ${port}`))
+app.listen(port, () => console.log(`Server is listening on port ${port}`));
