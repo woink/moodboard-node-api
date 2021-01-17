@@ -4,8 +4,6 @@ import { routes } from './routes';
 import connect from './connect';
 import dotenv from 'dotenv';
 
-// ADD MONGODB
-
 const port = 5000;
 const app: Application = express();
 
