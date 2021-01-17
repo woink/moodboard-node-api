@@ -2,7 +2,8 @@ import express, { Request, Response, Application } from 'express';
 import bodyParser from 'body-parser';
 import { routes } from './routes';
 import connect from './connect';
-// import dotenv from 'dotenv';
+
+require('dotenv').config();
 
 const port = 5000;
 const app: Application = express();
@@ -16,6 +17,6 @@ app.get('/', (req: Request, res: Response) => {
 
 app.listen(port, () => console.log(`Server is listening on port ${port}`));
 
-const db = `mongodb+srv://woink:${process.env.MOODBOARD_PASS}@cluster0.oc0mt.mongodb.net/main?retryWrites=true&w=majority`;
+const db = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@${process.env.DB_ADDRS}?retryWrites=true&w=majority`;
 connect({ db });
 routes(app);
