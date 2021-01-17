@@ -2,7 +2,7 @@ import express, { Request, Response, Application } from 'express';
 import bodyParser from 'body-parser';
 import { routes } from './routes';
 import connect from './connect';
-import dotenv from 'dotenv';
+// import dotenv from 'dotenv';
 
 const port = 5000;
 const app: Application = express();
