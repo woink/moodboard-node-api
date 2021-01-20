@@ -12,11 +12,7 @@ const app: Application = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use(boardRoutes);
-
-// app.get('/', (req: Request, res: Response) => {
-//   res.send('Welcome to the homepage');
-// });
+app.use('/api/v1/boards', boardRoutes);
 
 app.listen(port, () => console.log(`Server is listening on port ${port}`));
 
