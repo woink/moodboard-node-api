@@ -5,7 +5,7 @@ import connect from './connect';
 
 require('dotenv').config();
 
-const port = 5000;
+const port = process.env.SERVER_PORT;
 const app: Application = express();
 
 app.use(bodyParser.json());
