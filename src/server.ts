@@ -15,7 +15,7 @@ app
   .use(bodyParser.urlencoded({ extended: true }))
   .use('/api/v1/boards', boardRoutes)
   .use('/api/v1/images', imageRoutes)
-  .listen(port, () => console.log(`Server is listening on port ${port}`));
+  .listen(port, () => console.info(`Server is listening on port ${port}`));
 
 const db = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@${process.env.DB_ADDRS}?retryWrites=true&w=majority`;
 connect({ db });
