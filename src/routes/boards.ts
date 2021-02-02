@@ -122,12 +122,10 @@ router
     console.log('Get Boards');
     res.json({ DUMMY_BOARDS });
   })
-
   .get('/:id', (req: Request, res: Response) => {
     const imageId = +req.params.id;
     console.log(`Find board by [id: ${imageId}]`);
     const image = DUMMY_BOARDS.find((ele) => ele.id === imageId);
-
     if (!image) {
       return res.status(404).json({ message: 'no data' });
     }

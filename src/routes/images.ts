@@ -30,7 +30,6 @@ router
     console.log('Get Images');
     res.json({ DUMMY_IMAGES });
   })
-
   .get('/:id', (req: Request, res: Response) => {
     const imageId = +req.params.id;
     console.log(`Find image by [id: ${imageId}]`);
