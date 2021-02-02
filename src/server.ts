@@ -1,5 +1,6 @@
 import express, { Application } from 'express';
 import bodyParser from 'body-parser';
+import morgan from 'morgan';
 
 import connect from './util/db';
 import boardRoutes from './routes/boards';
@@ -11,11 +12,12 @@ const port = process.env.SERVER_PORT || 5000;
 const app: Application = express();
 
 app
+  .use(morgan('dev'))
   .use(bodyParser.json())
   .use(bodyParser.urlencoded({ extended: true }))
   .use('/api/v1/boards', boardRoutes)
   .use('/api/v1/images', imageRoutes)
-  .listen(port, () => console.info(`Server is listening on port ${port}`));
+  .listen(port, () => console.debug(`Server is listening on port ${port}`));
 
 const db = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@${process.env.DB_ADDRS}?retryWrites=true&w=majority`;
 connect({ db });
