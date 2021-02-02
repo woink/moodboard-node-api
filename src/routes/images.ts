@@ -27,14 +27,11 @@ const DUMMY_IMAGES = [
 
 router
   .get('/', (req: Request, res: Response) => {
-    console.info('Get Images');
     res.json({ DUMMY_IMAGES });
   })
   .get('/:id', (req: Request, res: Response) => {
     const imageId = +req.params.id;
-    console.info(`Find image by [id: ${imageId}]`);
     const image = DUMMY_IMAGES.find((ele) => ele.id === imageId);
-    console.info(image);
     res.json({ image });
   });
 
