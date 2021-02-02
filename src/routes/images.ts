@@ -25,16 +25,17 @@ const DUMMY_IMAGES = [
   },
 ];
 
-router.get('/', (req: Request, res: Response) => {
-  console.log('Get Images');
-  res.json({ DUMMY_IMAGES });
-});
+router
+  .get('/', (req: Request, res: Response) => {
+    console.log('Get Images');
+    res.json({ DUMMY_IMAGES });
+  })
 
-router.get('/:id', (req: Request, res: Response) => {
-  const imageId = +req.params.id;
-  console.log(`Find image by [id: ${imageId}]`);
-  const image = DUMMY_IMAGES.find((ele) => ele.id === imageId);
-  res.json({ image });
-});
+  .get('/:id', (req: Request, res: Response) => {
+    const imageId = +req.params.id;
+    console.log(`Find image by [id: ${imageId}]`);
+    const image = DUMMY_IMAGES.find((ele) => ele.id === imageId);
+    res.json({ image });
+  });
 
 export default router;
