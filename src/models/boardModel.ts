@@ -6,15 +6,18 @@ export interface IBoard extends Document {
   images?: [IImage['_id']];
 }
 
-const boardSchema: Schema = new Schema({
-  title: {
-    type: String,
-    required: true,
-    unique: true,
+const boardSchema: Schema = new Schema(
+  {
+    title: {
+      type: String,
+      required: true,
+      unique: true,
+    },
+    images: {
+      type: Schema.Types.ObjectId,
+    },
   },
-  images: {
-    type: Schema.Types.ObjectId,
-  },
-});
+  { timestamps: true }
+);
 
 export default mongoose.model<IBoard>('Board', boardSchema);

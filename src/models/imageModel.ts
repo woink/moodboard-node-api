@@ -8,12 +8,15 @@ export interface IImage extends Document {
   width?: Number;
 }
 
-const imageSchema: Schema = new Schema({
-  src: { type: String, required: true },
-  x: { type: Number },
-  y: { type: Number },
-  height: { type: Number },
-  width: { type: Number },
-});
+const imageSchema: Schema = new Schema(
+  {
+    src: { type: String, required: true },
+    x: { type: Number },
+    y: { type: Number },
+    height: { type: Number },
+    width: { type: Number },
+  },
+  { timestamps: true }
+);
 
 export default mongoose.model<IImage>('Image', imageSchema);
