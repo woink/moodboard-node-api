@@ -1,3 +1,4 @@
+import { CreateQuery } from 'mongoose';
 import Board, { IBoard } from '../models/boardModel';
 
 async function getBoards(): Promise<IBoard[]> {
@@ -20,7 +21,20 @@ async function getBoard(id: string): Promise<IBoard | null> {
     });
 }
 
+async function createBoard({ title }: CreateQuery<IBoard>): Promise<IBoard> {
+  return Board.create({
+    title,
+  })
+    .then((data: IBoard) => {
+      return data;
+    })
+    .catch((error: Error) => {
+      throw error;
+    });
+}
+
 export default {
   getBoards,
   getBoard,
+  createBoard,
 };

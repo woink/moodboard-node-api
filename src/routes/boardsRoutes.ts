@@ -12,6 +12,11 @@ router
   .get('/:id', async (req, res) => {
     const board = await boardsController.getBoard(req.params.id);
     return res.send({ board });
+  })
+
+  .post('/', async (req, res) => {
+    const board = await boardsController.createBoard({ title: req.body.title });
+    return res.send({ board });
   });
 
 export default router;
