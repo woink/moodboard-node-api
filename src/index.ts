@@ -3,6 +3,7 @@ import bodyParser from 'body-parser';
 import morgan from 'morgan';
 import connect from './connect';
 import routes from './routes';
+import cors from 'cors';
 
 require('dotenv').config();
 
@@ -13,6 +14,7 @@ app
   .use(morgan('dev'))
   .use(bodyParser.json())
   .use(bodyParser.urlencoded({ extended: true }))
+  .use(cors())
   .use(routes)
   .use((req: Request, res: Response) => {
     res.status(404).send('Unknown Request');
