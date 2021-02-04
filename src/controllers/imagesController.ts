@@ -1,7 +1,8 @@
-import Image, { IImage } from '../models/imageModel';
+import images, { IImage } from '../models/imageModel';
 
-async function GetImages(): Promise<IImage[]> {
-  return await Image.find()
+async function getImages(): Promise<IImage[]> {
+  return await images
+    .find()
     .then((data: IImage[]) => {
       return data;
     })
@@ -11,5 +12,5 @@ async function GetImages(): Promise<IImage[]> {
 }
 
 export default {
-  GetImages,
+  getImages,
 };

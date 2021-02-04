@@ -1,7 +1,9 @@
-import Board, { IBoard } from '../models/boardModel';
+import { Schema } from 'mongoose';
+import board, { IBoard } from '../models/boardModel';
 
-async function GetBoards(): Promise<IBoard[]> {
-  return await Board.find()
+async function getBoards(): Promise<IBoard[]> {
+  return await board
+    .find()
     .then((data: IBoard[]) => {
       return data;
     })
@@ -10,6 +12,18 @@ async function GetBoards(): Promise<IBoard[]> {
     });
 }
 
+async function getBoard(id: string): Promise<IBoard | null> {
+  return await board
+    .findById(id)
+    .then((data) => {
+      return data;
+    })
+    .catch((error: Error) => {
+      throw error;
+    });
+}
+
 export default {
-  GetBoards,
+  getBoards,
+  getBoard,
 };
