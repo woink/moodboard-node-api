@@ -10,6 +10,7 @@ export default ({ db }: TInput) => {
       .connect(db, {
         useNewUrlParser: true,
         useUnifiedTopology: true,
+        useCreateIndex: true,
       })
       .then(() => {
         return console.info(`Successfully connected to Database`);
