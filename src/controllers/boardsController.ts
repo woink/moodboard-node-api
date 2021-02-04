@@ -1,4 +1,3 @@
-import { Schema } from 'mongoose';
 import board, { IBoard } from '../models/boardModel';
 
 async function getBoards(): Promise<IBoard[]> {
