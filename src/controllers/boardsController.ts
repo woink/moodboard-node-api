@@ -1,8 +1,7 @@
-import board, { IBoard } from '../models/boardModel';
+import Board, { IBoard } from '../models/boardModel';
 
 async function getBoards(): Promise<IBoard[]> {
-  return await board
-    .find()
+  return await Board.find()
     .then((data: IBoard[]) => {
       return data;
     })
@@ -12,8 +11,7 @@ async function getBoards(): Promise<IBoard[]> {
 }
 
 async function getBoard(id: string): Promise<IBoard | null> {
-  return await board
-    .findById(id)
+  return await Board.findById(id)
     .then((data) => {
       return data;
     })
