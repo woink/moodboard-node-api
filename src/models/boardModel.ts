@@ -1,5 +1,5 @@
 import mongoose, { Schema, Document } from 'mongoose';
-import { IImage } from './image.model';
+import { IImage } from './imageModel';
 
 export interface IBoard extends Document {
   title: string;

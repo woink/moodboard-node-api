@@ -1,4 +1,4 @@
-import Board, { IBoard } from '../models/board.model';
+import Board, { IBoard } from '../models/boardModel';
 
 async function GetBoards(): Promise<IBoard[]> {
   return await Board.find()

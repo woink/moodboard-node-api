@@ -1,4 +1,4 @@
-import Image, { IImage } from '../models/image.model';
+import Image, { IImage } from '../models/imageModel';
 
 async function GetImages(): Promise<IImage[]> {
   return await Image.find()

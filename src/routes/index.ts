@@ -1,16 +1,8 @@
 import { TRoutesInput } from '../types/routes';
-import BoardsController from '../controllers/boards.controller';
-import ImagesController from '../controllers/images.controller';
+import ImageRoutes from './imagesRoutes';
+import BoardRoutes from './boardsRoutes';
 
 export default ({ app }: TRoutesInput) => {
-  app
-    .get('/api/v1/boards', async (req, res) => {
-      const boards = await BoardsController.GetBoards();
-      return res.send({ boards });
-    })
-
-    .get('/api/v1/images', async (req, res) => {
-      const images = await ImagesController.GetImages();
-      return res.send({ images });
-    });
+  app.use('/api/v1/boards', BoardRoutes);
+  app.use('/api/v1/images', ImageRoutes);
 };
