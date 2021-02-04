@@ -1,9 +1,18 @@
-import images, { IImage } from '../models/imageModel';
+import Image, { IImage } from '../models/imageModel';
 
 async function getImages(): Promise<IImage[]> {
-  return await images
-    .find()
+  return await Image.find()
     .then((data: IImage[]) => {
+      return data;
+    })
+    .catch((error: Error) => {
+      throw error;
+    });
+}
+
+async function getImage(id: string): Promise<IImage | null> {
+  return await Image.findById(id)
+    .then((data) => {
       return data;
     })
     .catch((error: Error) => {
@@ -13,4 +22,5 @@ async function getImages(): Promise<IImage[]> {
 
 export default {
   getImages,
+  getImage,
 };
