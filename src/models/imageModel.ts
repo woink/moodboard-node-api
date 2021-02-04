@@ -2,10 +2,10 @@ import mongoose, { Schema, Document } from 'mongoose';
 
 export interface IImage extends Document {
   src: string;
-  x: Number;
-  y: Number;
-  height: Number;
-  width: Number;
+  x?: Number;
+  y?: Number;
+  height?: Number;
+  width?: Number;
 }
 
 const imageSchema: Schema = new Schema({

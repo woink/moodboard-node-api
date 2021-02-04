@@ -3,7 +3,7 @@ import { IImage } from './imageModel';
 
 export interface IBoard extends Document {
   title: string;
-  images: [IImage['_id']];
+  images?: [IImage['_id']];
 }
 
 const boardSchema: Schema = new Schema({
