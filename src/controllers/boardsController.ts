@@ -1,36 +1,34 @@
-import { CreateQuery } from 'mongoose';
-import Board, { IBoard } from '../models/boardModel';
+import { Request, Response, NextFunction } from 'express';
+import Board from '../models/boardModel';
 
-async function getBoards(): Promise<IBoard[]> {
-  return await Board.find()
-    .then((data: IBoard[]) => {
-      return data;
-    })
-    .catch((error: Error) => {
-      throw error;
-    });
+async function getBoards(req: Request, res: Response, next: NextFunction) {
+  try {
+    const response = await Board.find();
+    res.send(response);
+  } catch (error) {
+    console.error(error);
+    next(error);
+  }
 }
 
-async function getBoard(id: string): Promise<IBoard | null> {
-  return await Board.findById(id)
-    .then((data) => {
-      return data;
-    })
-    .catch((error: Error) => {
-      throw error;
-    });
+async function getBoard(req: Request, res: Response, next: NextFunction) {
+  try {
+    const response = await Board.findById(req.params.id);
+    res.send(response);
+  } catch (error) {
+    console.error(error);
+    next(error);
+  }
 }
 
-async function createBoard({ title }: CreateQuery<IBoard>): Promise<IBoard> {
-  return Board.create({
-    title,
-  })
-    .then((data: IBoard) => {
-      return data;
-    })
-    .catch((error: Error) => {
-      throw error;
-    });
+async function createBoard(req: Request, res: Response, next: NextFunction) {
+  try {
+    const response = await Board.create(req.params.title);
+    res.send(response);
+  } catch (error) {
+    console.error(error);
+    next(error);
+  }
 }
 
 export default {

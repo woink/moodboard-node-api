@@ -1,29 +1,36 @@
-import { Request } from 'supertest';
-import Image, { IImage } from '../models/imageModel';
+import { Request, Response, NextFunction } from 'express';
+import Image from '../models/imageModel';
 import upload from '../services/ImageUpload';
 
-async function getImages() {
-  return await Image.find()
-    .then((data) => {
-      return data;
-    })
-    .catch((error) => {
-      throw error;
-    });
+async function getImages(req: Request, res: Response, next: NextFunction) {
+  try {
+    const response = await Image.find();
+    res.send(response);
+  } catch (error) {
+    console.error(error);
+    next(error);
+  }
 }
 
-async function getImage(id: string) {
-  return await Image.findById(id)
-    .then((data) => {
-      return data;
-    })
-    .catch((error) => {
-      throw error;
-    });
+async function getImage(req: Request, res: Response, next: NextFunction) {
+  try {
+    const response = await Image.findById(req.params.id);
+    res.send(response);
+  } catch (error) {
+    console.error(error);
+    next(error);
+  }
 }
 
-async function uploadImage(req: string) {
-  return await upload.single(req);
+async function uploadImage(req: Request, res: Response, next: NextFunction) {
+  try {
+    const response = await upload.single(req.params.file);
+    console.log(response);
+    res.send('Successfully uploaded');
+  } catch (error) {
+    // console.error(error)
+    next(error);
+  }
 }
 
 export default {

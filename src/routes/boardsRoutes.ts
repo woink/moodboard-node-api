@@ -4,19 +4,8 @@ import boardsController from '../controllers/boardsController';
 const router = express.Router();
 
 router
-  .get('/', async (req, res) => {
-    const boards = await boardsController.getBoards();
-    return res.send({ boards });
-  })
-
-  .get('/:id', async (req, res) => {
-    const board = await boardsController.getBoard(req.params.id);
-    return res.send({ board });
-  })
-
-  .post('/', async (req, res) => {
-    const board = await boardsController.createBoard({ title: req.body.title });
-    return res.send({ board });
-  });
+  .get('/', boardsController.getBoards)
+  .post('/', boardsController.createBoard)
+  .get('/:id', boardsController.getBoard);
 
 export default router;
