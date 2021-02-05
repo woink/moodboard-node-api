@@ -1,9 +1,11 @@
 import express from 'express';
-import BoardsController from '../controllers/boardsController';
+import boardsController from '../controllers/boardsController';
 
-const Router = express.Router();
+const router = express.Router();
 
-export default Router.get('/', async (req, res) => {
-  const boards = await BoardsController.GetBoards();
-  return res.send({ boards });
-});
+router
+  .get('/', boardsController.getBoards)
+  .post('/', boardsController.createBoard)
+  .get('/:id', boardsController.getBoard);
+
+export default router;

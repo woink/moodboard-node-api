@@ -1,9 +1,11 @@
 import express from 'express';
-import ImagesController from '../controllers/imagesController';
+import imagesController from '../controllers/imagesController';
 
-const Router = express.Router();
+const router = express.Router();
 
-export default Router.get('/', async (req, res) => {
-  const images = await ImagesController.GetImages();
-  return res.send({ images });
-});
+router
+  .get('/', imagesController.getImages)
+  .get('/:id', imagesController.getImage)
+  .post('/upload-image', imagesController.uploadImage);
+
+export default router;

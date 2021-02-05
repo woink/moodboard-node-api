@@ -1,8 +1,10 @@
-import { TRoutesInput } from '../types/routes';
-import ImageRoutes from './imagesRoutes';
-import BoardRoutes from './boardsRoutes';
+import express from 'express';
+import imageRoutes from './imagesRoutes';
+import boardRoutes from './boardsRoutes';
 
-export default ({ app }: TRoutesInput) => {
-  app.use('/api/v1/boards', BoardRoutes);
-  app.use('/api/v1/images', ImageRoutes);
-};
+const router = express.Router();
+
+router.use('/api/v1/boards', boardRoutes);
+router.use('/api/v1/images', imageRoutes);
+
+export default router;

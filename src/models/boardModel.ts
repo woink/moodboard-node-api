@@ -3,12 +3,21 @@ import { IImage } from './imageModel';
 
 export interface IBoard extends Document {
   title: string;
-  images: [IImage['_id']];
+  images?: [IImage['_id']];
 }
 
-const BoardSchema: Schema = new Schema({
-  title: { type: String, required: true, unique: true },
-  images: { type: Schema.Types.ObjectId },
-});
+const boardSchema: Schema = new Schema(
+  {
+    title: {
+      type: String,
+      required: true,
+      unique: true,
+    },
+    images: {
+      type: Schema.Types.ObjectId,
+    },
+  },
+  { timestamps: true }
+);
 
-export default mongoose.model<IBoard>('Board', BoardSchema);
+export default mongoose.model<IBoard>('Board', boardSchema);
