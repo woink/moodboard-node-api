@@ -2,7 +2,7 @@
 
 ## _Work in Progress_
 
-### Built with:
+### Built with
 
 - Node.js
 - MongoDB

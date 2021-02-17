@@ -1,13 +1,14 @@
-import express, { Application, Request, Response } from 'express';
+import express from 'express';
 import bodyParser from 'body-parser';
 import morgan from 'morgan';
 import connect from './connect';
 import routes from './routes';
 import cors from 'cors';
+import path from 'path';
 
 require('dotenv').config();
 
-const app: Application = express();
+const app = express();
 const port = process.env.SERVER_PORT || 5000;
 
 app
@@ -15,8 +16,9 @@ app
   .use(bodyParser.json())
   .use(bodyParser.urlencoded({ extended: true }))
   .use(cors())
+  .use(express.static('public'))
   .use(routes)
-  .use((req: Request, res: Response) => {
+  .use((req, res) => {
     res.status(404).send('Unknown Request');
   })
   .listen(port, () => console.debug(`Server is listening on port ${port}`));
