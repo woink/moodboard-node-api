@@ -4,7 +4,6 @@ import morgan from 'morgan';
 import connect from './connect';
 import routes from './routes';
 import cors from 'cors';
-import path from 'path';
 
 require('dotenv').config();
 
