@@ -26,7 +26,6 @@ async function uploadImage(req: Request, res: Response, next: NextFunction) {
     });
     res.send(response);
   } catch (error) {
-    console.log('made it here');
     next(error);
   }
 }
