@@ -21,10 +21,12 @@ async function getImage(req: Request, res: Response, next: NextFunction) {
 
 async function uploadImage(req: Request, res: Response, next: NextFunction) {
   try {
-    res.send('Successfully uploaded');
+    const response = await Image.create({
+      src: req.file.path,
+    });
+    res.send(response);
   } catch (error) {
     console.log('made it here');
-    console.error(error);
     next(error);
   }
 }
