@@ -1,5 +1,3 @@
-// import S3 from 'aws-sdk/clients/s3'
-// import multerS3 from 'multer-s3'
 const cloudinary = require('cloudinary').v2;
 import { CloudinaryStorage } from 'multer-storage-cloudinary';
 import multer from 'multer';
