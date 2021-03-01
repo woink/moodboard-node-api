@@ -15,7 +15,6 @@ app
   .use(bodyParser.json())
   .use(bodyParser.urlencoded({ extended: true }))
   .use(cors())
-  // .use(express.static('public'))
   .use(routes)
   .use((req, res) => {
     res.status(404).send('Unknown Request');
