@@ -1,5 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 import Image from '../models/imageModel';
+import cloudinary from '../utils/cloudinary';
+import chalk from 'chalk';
 
 async function getImages(req: Request, res: Response, next: NextFunction) {
   try {
@@ -21,12 +23,15 @@ async function getImage(req: Request, res: Response, next: NextFunction) {
 
 async function uploadImage(req: Request, res: Response, next: NextFunction) {
   try {
-    console.log(res);
-    // const response = await Image.create({
-    //   src: req.file.path,
-    // });
-    // console.log(response)
-    // res.send(response);
+    const fileStr = req.body.data;
+    const uploadResponse = await cloudinary.v2.uploader.upload(fileStr);
+    const createdImage = await Image.create({
+      src: uploadResponse.secure_url,
+      height: uploadResponse.height,
+      width: uploadResponse.width,
+    });
+    res.send({ message: `Added ${createdImage} to database` });
+    console.info(chalk.green(createdImage));
   } catch (error) {
     next(error);
   }
