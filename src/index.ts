@@ -12,8 +12,17 @@ const port = process.env.SERVER_PORT || 5000;
 
 app
   .use(morgan('dev'))
-  .use(bodyParser.json())
-  .use(bodyParser.urlencoded({ extended: true }))
+  .use(
+    bodyParser.json({
+      limit: '50mb',
+    })
+  )
+  .use(
+    bodyParser.urlencoded({
+      limit: '50mb',
+      extended: true,
+    })
+  )
   .use(cors())
   .use(routes)
   .use((req, res) => {
