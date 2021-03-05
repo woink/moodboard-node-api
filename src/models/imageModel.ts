@@ -4,8 +4,8 @@ export interface IImage extends Document {
   src: string;
   x?: Number;
   y?: Number;
-  height?: Number;
-  width?: Number;
+  height: Number;
+  width: Number;
 }
 
 const imageSchema: Schema = new Schema(
