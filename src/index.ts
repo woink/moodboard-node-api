@@ -1,5 +1,4 @@
 import express from 'express';
-import bodyParser from 'body-parser';
 import morgan from 'morgan';
 import connect from './connect';
 import routes from './routes';
@@ -13,12 +12,12 @@ const port = process.env.SERVER_PORT || 3001;
 app
   .use(morgan('dev'))
   .use(
-    bodyParser.json({
+    express.json({
       limit: '50mb',
     })
   )
   .use(
-    bodyParser.urlencoded({
+    express.urlencoded({
       limit: '50mb',
       extended: true,
     })
