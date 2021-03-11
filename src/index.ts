@@ -22,7 +22,7 @@ app
     })
   )
   .use(routes)
-  .use((req, res) => {
+  .use((_req, res) => {
     res.status(404).send('Unknown Request');
   })
   .listen(port, () => console.debug(`Server is listening on port ${port}`));
