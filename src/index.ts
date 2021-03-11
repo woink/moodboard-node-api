@@ -2,7 +2,6 @@ import express from 'express';
 import morgan from 'morgan';
 import connect from './connect';
 import routes from './routes';
-import cors from 'cors';
 
 require('dotenv').config();
 
@@ -22,7 +21,6 @@ app
       extended: true,
     })
   )
-  .use(cors())
   .use(routes)
   .use((req, res) => {
     res.status(404).send('Unknown Request');
