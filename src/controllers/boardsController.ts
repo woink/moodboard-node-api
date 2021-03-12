@@ -29,8 +29,18 @@ async function createBoard(req: Request, res: Response, next: NextFunction) {
   }
 }
 
+async function deleteBoard(req: Request, res: Response, next: NextFunction) {
+  try {
+    const response = await Board.findByIdAndDelete(req.params.id)
+    res.send(response)
+  } catch (error) {
+    next(chalk.red(error.message))
+  }
+}
+
 export default {
   getBoards,
   getBoard,
   createBoard,
+  deleteBoard
 };
