@@ -2,6 +2,7 @@ import mongoose, { Schema, Document } from 'mongoose';
 
 export interface IImage extends Document {
   src: string;
+  public_id: string;
   x?: Number;
   y?: Number;
   height: Number;
@@ -11,10 +12,11 @@ export interface IImage extends Document {
 const imageSchema: Schema = new Schema(
   {
     src: { type: String, required: true },
+    public_id: { type: String, required: true },
     x: { type: Number },
     y: { type: Number },
-    height: { type: Number },
-    width: { type: Number },
+    height: { type: Number, required: true },
+    width: { type: Number, required: true },
   },
   { timestamps: true }
 );
