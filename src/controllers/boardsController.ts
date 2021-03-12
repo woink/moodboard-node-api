@@ -22,7 +22,7 @@ async function getBoard(req: Request, res: Response, next: NextFunction) {
 
 async function createBoard(req: Request, res: Response, next: NextFunction) {
   try {
-    const response = await Board.create(req.params.title);
+    const response = await Board.create({ title: req.body.title });
     res.send(response);
   } catch (error) {
     next(chalk.red(error.message));
@@ -31,10 +31,10 @@ async function createBoard(req: Request, res: Response, next: NextFunction) {
 
 async function deleteBoard(req: Request, res: Response, next: NextFunction) {
   try {
-    const response = await Board.findByIdAndDelete(req.params.id)
-    res.send(response)
+    const response = await Board.findByIdAndDelete(req.params.id);
+    res.send(response);
   } catch (error) {
-    next(chalk.red(error.message))
+    next(chalk.red(error.message));
   }
 }
 
@@ -42,5 +42,5 @@ export default {
   getBoards,
   getBoard,
   createBoard,
-  deleteBoard
+  deleteBoard,
 };
