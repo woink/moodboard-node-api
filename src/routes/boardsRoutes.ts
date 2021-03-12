@@ -5,7 +5,8 @@ const router = express.Router();
 
 router
   .get('/', boardsController.getBoards)
-  .post('/', boardsController.createBoard)
-  .get('/:id', boardsController.getBoard);
+  .post('/create', boardsController.createBoard)
+  .get('/:id', boardsController.getBoard)
+  .delete('/:id', boardsController.deleteBoard);
 
 export default router;

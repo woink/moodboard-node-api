@@ -38,14 +38,17 @@ async function uploadImage(req: Request, res: Response, next: NextFunction) {
   }
 }
 
-    next(error);
-
-  }
+// TODO: create removeImage function
+async function removeImage(req: Request, res: Response, next: NextFunction) {
+  try {
+    console.log(req.body.id);
+    // const response = await Image.findOneAndDelete({id: req.body.})
+  } catch (error) {}
 }
 
 export default {
   getImages,
   getImage,
   uploadImage,
-  removeImage
+  removeImage,
 };
